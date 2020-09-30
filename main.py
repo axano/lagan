@@ -32,10 +32,10 @@ def main():
 			try:
 				print("waiting for keyboard")
 				keyboard.wait('ctrl+shift+space')
-				# sleep(1)
-				Beep(1000,200)
 				sleep(0.2)
+				Beep(1000,200)
 				mute_volume()
+				sleep(0.2)
 				audio = r.listen(source)
 				command = r.recognize_google(audio)
 				restore_volume()
@@ -60,6 +60,8 @@ def execute(command):
 		webbrowser.open_new_tab("https://outlook.office.com/owa/?realm=ordina.be&path=/mail/sentitems")
 	elif (command == "Messenger"):
 		webbrowser.open_new_tab("https://www.messenger.com")
+	elif command == "game":
+		subprocess.Popen(['C:\\gog games\\Kingdom Come Deliverance\\bin\Win64\\KingdomCome.exe'],  creationflags=subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP)
 	else:
 		print("Command not recognized")
 		Beep(300,1000)
